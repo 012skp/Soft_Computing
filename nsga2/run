@@ -1,0 +1,1 @@
+gnuplot -e " set terminal png; set output '1.png'; plot 'output1','output' "
