@@ -6,7 +6,7 @@ using namespace std;
 #define pb push_back
 typedef pair<int,int> pii;
 
-int main(){
+int main(int argc, char* argv[]){
 	//Initialise...................
 	int features = 3; // temprature and cloudiness....
 	vector<vector<pii> > data(features); // data[0] => temprature;  data[1] => cloudiness; data[2] => speed.
@@ -25,7 +25,6 @@ int main(){
 	data[2].pb({60,100});	//HIGH SPEED
 
 
-	cout<<"test"<<endl;
 	//Rules Defined...
 	vector<vector<int> > rule(4,vector<int>(3));
 	rule[0][0] = 1;
@@ -41,13 +40,10 @@ int main(){
 	rule[3][1] = 2;
 	rule[3][2] = 1;
 
-	cout<<"test2"<<endl;
 	int n = features-1;
 	int param[n];
-	printf("Enter temp(0-100):"); fflush(stdout);
-	cin>>param[0];
-	printf("Enter cloudiness(0-100):"); fflush(stdout);
-	cin>>param[1];
+	param[0] = atoi(argv[1]);
+	param[1] = atoi(argv[2]);
 
 
 	vector<vector<pair<int,double> > > output(n);
@@ -71,9 +67,9 @@ int main(){
 
 
 	for(int i=0;i<output.size();i++){
-		printf("%d feature: ",i);
-		for(int j=0;j<output[i].size();j++) printf("{%d,%lf} ",output[i][j].F,output[i][j].S);
-		cout<<endl;
+		//printf("%d feature: ",i);
+		//for(int j=0;j<output[i].size();j++) printf("{%d,%lf} ",output[i][j].F,output[i][j].S);
+		//cout<<endl;
 	}
 		//Here output size = 2;
 	double ans = 0,sum = 0;
@@ -98,6 +94,6 @@ int main(){
 				sum+= min(y1,y2);
 			}
 		}
-		cout<<"you should drive at speed = "<<ans/sum<<endl;
+		cout<<param[0]<<"	"<<param[1]<<"	"<<ans/sum<<endl;
 
 }
